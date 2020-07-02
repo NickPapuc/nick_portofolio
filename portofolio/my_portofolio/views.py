@@ -1,0 +1,10 @@
+from django.shortcuts import render, get_object_or_404
+from .models import Jobs
+
+def homepage(request):
+    jobs = Jobs.objects
+    return render(request, 'my_portofolio/home.html', {'jobs':jobs})
+
+def detail(request, job_id):
+    job_detail = get_object_or_404(Jobs, pk=job_id)
+    return render(request, 'my_portofolio/detail.html', {'job': job_detail} )
